@@ -1,6 +1,17 @@
 
 TRIVIA QUIZ CREATION SERVER USING MongoDB
 
+This is a web application that provides a user interface that interacts with a MongoDB database filled with questions that users can use to
+create their own quizzes. I made this application to further my understanding of MongoDB and to improve my Javascript and NodeJS skills.
+
+1. Users can blantantly request 25 questions which they can use for theri own purpose. This functions similaryly to my Trivia Question API
+   except that it uses MongoDB to store the questions.
+
+2. Users can create a quiz and save it on the database
+
+3. Users can then access their own quiz
+
+Below I explain in depth the design decisions I made and how each function of the web app works
 
 Instructions -
 
