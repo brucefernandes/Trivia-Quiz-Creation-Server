@@ -1,0 +1,14 @@
+html
+	head
+
+
+	body
+		p= "Question: " 
+			|!{question}
+		p= "Category: " + category
+		p= "Difficulty: " + difficulty
+		p= "Correct Answer: " + correct_answer
+		p= "Incorrect Answers: "
+			each val in incorrect_answers
+				li=val
+				br

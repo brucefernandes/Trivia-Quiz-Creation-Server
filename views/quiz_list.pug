@@ -1,0 +1,11 @@
+html
+
+	body
+		each q in quiz
+			a(href="http://localhost:3000/quiz/" + q._id target="_blank")
+				|!{q.creator}
+				br
+				each t in q.tags
+					li
+						|!{t}
+			br

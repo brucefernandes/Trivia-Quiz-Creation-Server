@@ -1,0 +1,18 @@
+html
+	head
+		title Your Quiz
+
+	body
+
+		p Quiz Number (ID): #{quiz._id}
+
+		p Creator: #{quiz.creator}
+
+		p Quiz Tags:
+			each val in quiz.tags
+				li= val
+		p Questions
+			each val2 in quiz.questions
+				li 
+					a(href="http://localhost:3000/questions/" + val2._id target="_blank")
+						|!{val2.question}

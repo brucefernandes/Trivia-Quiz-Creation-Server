@@ -1,0 +1,57 @@
+
+TRIVIA QUIZ CREATION SERVER USING MongoDB
+
+
+Instructions -
+
+	- Type npm install to install all the modules required for the server to runs
+	- Run node databaseinitializer.js to fill the database with questions
+
+	Base URL - http://localhost:3000/
+	1. To get 25 questions - provide /questions and select GET (can be tested with POSTMAN)
+	2. To get a specific question - provide /questions/qID where qID is the Object ID of the question (can be tested with POSTMAN)
+	3. To load the createquiz page - provide /createquiz
+	4. To get a specific quiz - provide /quiz/quizID where quizID is the Object ID of the quiz (can be tested using POSTMAN)
+	5. To get all the quizzes stored in the database - provide /quizzes
+
+Assumptions made:
+ 	- The user knows the exact category and difficulty to be entered for the server to make a valid query to the database for the corresponding questions
+
+
+Design decisions:
+	- In order for a user to add a question to their quiz, the user my select a checkbox corresponding to their desired question.
+
+	- Once selected, the user will not be able to select that checkbox again; the only way they will be able to do so is if they select
+	  another category/difficulty and then go back to the earlier question, which will enable the checkbox. However, even if they try to
+	  add the question again, they will be prompted with an alert which will not permit them to do so.
+
+	- In order to delete a question, the user can select a checkbox beside the corresponding question which will remove it from the added questions section of the page.
+
+	- When a user saves a quiz properly, it will redirect them to another page displaying the information they just entered
+
+	- When a user enters the /quizzes route, they will see a list of quizzes with their corresponding tags. Each quiz and their tags is a link to the quiz resource
+
+How saving a quiz works:
+	- If the user saves a question, it creates a quiz object and sends it to the server using an XMLHttpRequest.
+	- The server uses the questions array in the object to get valid question objects corresponding the questions in that array
+	- The server then stores that quiz in the database and sends the quiz id back to the client which redirects the user to a page displaying the quiz's details
+
+How querying a quiz works:
+
+	- The user must select either a creator name or ONE tag in order for the server to provide quizzes.
+	- If the user enters a name such as 'Bruce', they will be provided the quiz created by 'Bruce'
+	- Even if they enter 'Bru', 'bruce' or 'uce', they will still be provided with Bruce's quiz
+
+	- However with tags, the user must only select one tag
+	- This tag must be exact but not case sensitive
+	- So if the user types 'ANIME' or 'anime', they will get all the quizzes with the anime tag
+	- However, if they type 'ani' or 'me' or anything like that they will be provided with an empty array
+
+What I could have done better:
+
+	1. If the user makes an HTML request to the /questions route, they will see a list of questions with checkboxes next to them
+	   These checkboxes dont do anything and should have been eliminated. However I believe that I still managed to stick to the proper
+	   format which involves links to the question resource.
+
+	2. The /quizzes routes displays creator names and the tags associated with it. I could have made each tag a link to every other quiz
+	   that matched that tag but the specifications did not require me to do so.

@@ -1,0 +1,8 @@
+html
+
+	body
+		each q in questions
+			a(id=q._id href="http://localhost:3000/questions/" + q._id target="_blank")
+				|!{q.question}
+			input(id=q._id  type="checkbox" onclick="addQuestion()")
+			br
